@@ -1,13 +1,13 @@
 function prepareCrud() {
-    let elements = document.getElementsByClassName('delete');
+    let elements = document.getElementsByClassName('crud-delete');
     for (let i = elements.length - 1; i >= 0; --i) {
         elements[i].addEventListener("click", crudInit, false)
     }
-    elements = document.getElementsByClassName('store');
+    elements = document.getElementsByClassName('crud-store');
     for (let i = elements.length - 1; i >= 0; --i) {
         elements[i].addEventListener("submit", crudInit, false)
     }
-    elements = document.getElementsByClassName('update');
+    elements = document.getElementsByClassName('crud-update');
     for (let i = elements.length - 1; i >= 0; --i) {
         elements[i].addEventListener("submit", crudInit, false)
     }
@@ -31,15 +31,13 @@ function showMensage(title, text, type) {
 function crudInit(event) {
     const url = this.dataset.url;
     let formData;
-    if (this.classList.contains('delete')) {
-        console.log('hola')
+    if (this.classList.contains('crud-delete')) {
         formData = new FormData();
         formData.append('_method', 'DELETE');
     } else {
         event.preventDefault();
         formData = new FormData(this);
-        console.log('aqui')
-        if (this.classList.contains('update')) {
+        if (this.classList.contains('crud-update')) {
             formData.append('_method', 'put');
         }
     }

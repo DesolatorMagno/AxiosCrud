@@ -24,11 +24,11 @@ Un simple formulario activando su evento submit es suficiente para asegurar que 
 
 Para almacenar
 
-`<form action="" method="POST" role="form" class="store" data-url="{{ route('user.store') }}">`
+`<form action="" method="POST" role="form" class="crud-store" data-url="{{ route('user.store') }}">`
 
 Para Actualizar
 
-`<form action="" method="POST" role="form" class="update" data-url="{{ route('user.update', ['id' => $user->id]) }}">`
+`<form action="" method="POST" role="form" class="crud-update" data-url="{{ route('user.update', ['id' => $user->id]) }}">`
 
 Lo único que cambia es la clase aplicada a la misma.
 
@@ -36,9 +36,9 @@ Lo único que cambia es la clase aplicada a la misma.
 
 Con delete es mas sencillo aun, solo se requiere cualquier elemento html el cual registre un click y la clase delete.
 
-`<button class="delete" data-url={{ route('user.destroy', ['id' => $user->id]) }}>Borrar</button>`
+`<button class="crud-delete" data-url={{ route('user.destroy', ['id' => $user->id]) }}>Borrar</button>`
 
-Y eso es todo lo que se requiere, solamente colocar una de las 3 clases requeridas (store, update, delete) y colocar el data-url con la url a la que se envía el request.
+Y eso es todo lo que se requiere, solamente colocar una de las 3 clases requeridas (crud-store, crud-update, crud-delete) y colocar el data-url con la url a la que se envía el request.
 
 ## Repuesta del back.
 Ahora bien, debido a la implementación de SweetAlert para informa sobre el succes or fail de el request al usuario, se requiere una respuesta en un formato especifico desde el back, la cual debe ser de la forma :
@@ -46,3 +46,7 @@ Ahora bien, debido a la implementación de SweetAlert para informa sobre el succ
 `['text' => "Usuario creado", 'title' => "Usuario creado", 'type' => 'success'];`
 
 Esta respuesta consta de lo mínimo necesario para realizar la muestra del Alert, en el futuro se agregaran mas campos opcionales para detalles como posición y tiempo que deberá durar en pantalla el alert, por ahora la misión es tener lo minino posible que permita un producto viable.
+
+## TODO
+Que hacer en caso de errores.
+Volverlo una clase.
